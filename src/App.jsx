@@ -22,6 +22,15 @@ const App = () => {
     if (email === "admin@me.com" && password === "123") {
       setUser("admin");
       localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+    } else if (email === "user@gmail.com" && password === "123456") {
+      const defaultEmployee = {
+        email: "user@gmail.com",
+        name: "Sample User",
+        role: "employee"
+      };
+      setUser("employee");
+      setLoggedInUser(defaultEmployee);
+      localStorage.setItem("loggedInUser", JSON.stringify({ role: "employee", data: defaultEmployee }));
     } else if (userData && Array.isArray(userData)) {
       const employee = userData.find((e) => email === e.email && password === e.password);
       if (employee) {
